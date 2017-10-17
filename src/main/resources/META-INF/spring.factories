@@ -1,0 +1,8 @@
+# Bootstrap components
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.springfox.config.SpringFoxAutoConfiguration
+
+
+# Custom Application Listener
+org.springframework.context.ApplicationListener=\
+com.springfox.config.SpringFoxEnvironmentListener

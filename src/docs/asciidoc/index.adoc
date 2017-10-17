@@ -1,0 +1,48 @@
+= SpringFox Starter Reference Manual
+
+This document describes how the starter is implemented.
+
+There are three main classes:
+
+* SpringFoxAutoConfiguration
+* SpringFoxEnvironmentListener
+* SpringFoxProperties
+
+
+== SpringFoxAutoConfiguration
+This class is used to add automatically Swagger capabilities to your project
+
+
+== SpringFoxEnvironmentListener
+This listener class is used to set to `security.ignored` the swagger-ui endpoints if Spring security is enabled.
+
+
+== SpringFoxProperties
+This class is a Spring `ConfigurationProperties` class used to store the properties that the starter needs.
+These are the properties needed.
+
+* *Title*: API title. If you don't inform this property it will have the value of the property `spring.application.name`
+* *Description*: Description of the API
+* *Version*: API version
+* *Paths*: Paths that SpringFox is going to expose. With the default value "**/api/***"
+* *License*: With the default value *"Apache License Version 2.0"*
+
+
+== spring.factories
+The `spring.factories` file informs Spring Boot that we want to add the `SpringFoxAutoConfiguration` to the list
+of autoconfiguration classes that are going to be used.
+It also adds `SpringFoxEnvironmentPostProcessor` to the list of `EnvironmentPostProcessors` that are going to be used.
+
+[source]
+.spring.factories
+----
+# Bootstrap components
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+SpringFoxAutoConfiguration
+
+
+# Environment Post Processor
+org.springframework.boot.env.EnvironmentPostProcessor=\
+SpringFoxEnvironmentPostProcessor
+----
+

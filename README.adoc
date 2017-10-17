@@ -1,0 +1,69 @@
+ifndef::link_extension[:link_extension: adoc]
+= SpringFox Starter
+
+This project provides a starter for using http://springfox.github.io/springfox/[SpringFox] in your project.
+SpringFox is a project that aims at creating automated JSON API documentation for API’s built with Spring and
+is used to integrate Swagger into an application.
+
+You can read the SpringFox documentation http://springfox.github.io/springfox/docs/current[here]
+
+This starter is a opinionated library that has 2 main purposes:
+
+. Generates a simple swagger project using SpringFox but without creating/using the SpringFox beans/annotations
+(*Docket*, *EnableSwagger2*, etc).
+
+. Excludes from security all swagger endpoints and paths... if your app has security.
+
+== Try it
+
+You only need to add to your *pom.xml* this dependency:
+
+[source,xml]
+----
+<dependency>
+    <groupId>com.springfox.starter</groupId>
+    <artifactId>springfox-starter</artifactId>
+    <version></version>
+</dependency>
+----
+
+Use the last version in tag *<version>*
+
+== Configure it
+
+You can customize some parameters to conform the generated swagger.
+
+By default, the starter search all your endpoints in under */api/* but you can change this with the
+*swagger.paths* property:
+
+[source,properties]
+.application.properties
+----
+swagger.paths=/api/v4/.*
+----
+
+Also you can customize visual swagger parameters like title, description, version and license:
+
+[source,properties]
+.application.properties
+----
+swagger.title=The TITLE
+swagger.description=The DESC
+swagger.version=2.2
+swagger.license=Another license
+----
+
+== Test it
+
+Assuming you are working on a local environment, you can view the generated swagger endpoint here (this is the
+default Swagger UI endppoint):
+
+http://localhost:8080/swagger-ui.html
+
+
+== Changelog
+include::changelog.adoc[]
+
+== Reference manual
+link:src/docs/asciidoc/index.{link_extension}[Check here the reference manual]
+
